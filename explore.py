@@ -43,6 +43,35 @@ def distplot(df, column):
         print('')
 
 
+### Scatterplot
+
+def scatterplot(X, y, train):
+    '''
+    Takes in an X and y and a dataframe and creates a loop for a scatterplot
+    Tip: Add y as string or assign a variable
+    assign X as a variable
+    '''
+
+    for i in X:
+        sns.scatterplot(x=i, y=y, data=train)
+        plt.title('Correlation of '+ i+ ' with '+y)
+        plt.show()
+
+
+### Lmplot
+
+def lmplot(X, y, train):
+    '''
+    Takes in an an X, y and dataframe and returns a loop of lmplots.
+    Tip: Add y as string or assign a variable
+    assign X as a variable
+    '''
+    for i in X:
+        sns.lmplot(x=i, y=y, data=train, line_kws={'color': 'red'})
+        plt.title('Correlation of '+ i+ ' with '+y)
+        plt.show()
+
+
 
 def rmse(algo, X_train, X_validate, y_train, y_validate, target, model_name):
     '''
