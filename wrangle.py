@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 
 from sklearn.impute import SimpleImputer
 from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import MinMaxScaler
+from sklearn.preprocessing import RobustScaler
 
 
 def acquire_who_data():
@@ -68,11 +68,43 @@ def prep_who(df):
     
     # hot encode status column into a bool
     df['developed_country'] = np.where(df['developed_country'] == 'Developed', 1, 0)
+    
+    return df
 
-    # fill nans with mean for hep_b column
+
+def handle_who_nulls(df):
+    '''
+    This function takes in my who life expectancy dataframe and 
+    '''
+
+    # fill null for hep_b column using mean average
     df['country_avg'] = df.groupby('country').hep_b.transform('mean')
     df.hep_b = df.hep_b.fillna(df.country_avg)
-    
+
+
+    # fill alcohol na columns with last known alcohol entry since it is a linear trend per country
+    df['country_avg'] = df.groupby('country').alcohol.transform('bfill')
+    df.alcohol = df.alcohol.fillna(df.country_avg)
+
+
+    # fill null for total expenditure using backfill method
+    df['country_avg'] = df.groupby('country').total_expenditure.transform('bfill')
+    df.total_expenditure = df.total_expenditure.fillna(df.country_avg)
+
+
+    # some countries has 0 entries of yrs of education, to save this column I filled NAs using the
+    # mean for developed countries and undeveloped countries
+    df['country_avg'] = df.groupby('developed_country').yrs_education.transform('mean')
+    df.yrs_education = df.yrs_education.fillna(df.country_avg)
+
+
+    # population and gdp column has too many to impute and the data is wrong, distribution is all over the place
+    df.drop(columns=['population','gdp', 'income_comp_resources', 'country_avg'], inplace=True)
+
+
+    # drop the remaining nulls in the columns
+    df.dropna(inplace=True)
+
     return df
 
 
@@ -130,6 +162,7 @@ def impute(df, strategy_method, column_list):
 
     return df
 
+
 def split_data(df):
     '''
     This function takes in a dataframe and splits it into train, test, and 
@@ -148,19 +181,35 @@ def split_data(df):
 
 
 
-## MY MINMAX SCALER FUNCTION
-def min_max_scaler(X_train, X_validate, X_test, numeric_cols):
+
+def split_ytarget(train, validate, test, y_target):
+    '''
+    This function takes in split data and a y_target variable and creates X and y
+    dataframes for each. Note: enter y_target as a string string
+    '''
+    X_train, y_train = train.drop(columns=[y_target]), train[y_target]
+    X_validate, y_validate = validate.drop(columns=[y_target]), validate[y_target]
+    X_test, y_test = test.drop(columns=[y_target]), test[y_target]
+    
+    return X_train, y_train, X_validate, y_validate, X_test, y_test
+
+
+
+
+
+## Robust SCALER FUNCTION
+def robust_scaler(X_train, X_validate, X_test, numeric_cols):
     """
     this function takes in 3 dataframes with the same columns,
     a list of numeric column names (because the scaler can only work with numeric columns),
-    and fits a min-max scaler to the first dataframe and transforms all
+    and fits a robust scaler to the first dataframe and transforms all
     3 dataframes using that scaler.
     it returns 3 dataframes with the same column names and scaled values.
     """
     # create the scaler object and fit it to X_train (i.e. identify min and max)
     # if copy = false, inplace row normalization happens and avoids a copy (if the input is already a numpy array).
 
-    scaler = MinMaxScaler(copy=True).fit(X_train[numeric_cols])
+    scaler = RobustScaler(copy=True).fit(X_train[numeric_cols])
 
     # scale X_train, X_validate, X_test using the mins and maxes stored in the scaler derived from X_train.
     #
