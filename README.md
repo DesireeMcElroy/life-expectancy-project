@@ -1,5 +1,9 @@
+What country characteristics drive the average life expectancy of it's citizens? Is the quality of life lower in the underdeveloped countries than those that are developed? Do vaccination rates such as hepatitis b and polio play a part in infant mortality death rates? Is a country's total expenditure correlated to the BMI rate of the population? How can we predict life expectancy of a population accurately? Can pinpointing drivers help improve average life expectancy in certain countries?\
+In my project, I explore each of these inquiries utilizing the World Health Organization's Life Expectancy dataframe. Through visualizations and statistical testing, I can pinpoint which data characteristics not only directly correlate to each other, but also a country's average life expectancy. Utilizing supervised learning via regression, I was able to create a machine learning model that accurately predicted life expectancy with an average variance two to three years based off of the dataset's top driving features.
+
+
 ## Project Goals
-1. Wrangle WHO dataset by acquiring and cleaning the data to increase usability for project.
+1. Wrangle WHO life expectancy dataset by acquiring and cleaning the data to increase usability for project.
 2. Utilize wrangled dataframe to explore correlating features to life expectancy via visualizations, statistical testing and possible clustering methods.
 3. Create machine learning models to predict life expectancy and compare end result to baseline model.
 
@@ -15,13 +19,13 @@
 * Steps to recreate
     1. Clone this repository
     - https://github.com/DesireeMcElroy/life_expectancy-project
+    2. Import WHO Life Expectancy dataset then go through the data science pipeline to wrangle, explore and model.
 
 ## Key Findings
 1. Through visual exploration and statistical testing, I was able to confirm my suspicion of top features for my model.
 Using the recursive feature method, I confirmed which features would make it into my final model.
 2. I first created a baseline model using the mean average of life expectancy and initially obtained an RMSE score of 9.2. This score was pretty high considering life expecting was off by an average of 8 years.
-3. I then created four competitive models using multiple different algorithms.
-Three models using LinearRegression and PolynomialRegression outperformed my baseline by over 50%
+3. I then created four competitive models using multiple algorithms. Three models using LinearRegression and PolynomialRegression outperformed my baseline by over 50%
 4. In the end I moved forward with Model 5 (PolynomialRegression with a degree of 3) to test on the unseen test data set. The results were as follows:
     - train dataset: RMSE = 2.72
     - validate (unseen) dataset: RMSE = 3.27
