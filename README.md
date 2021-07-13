@@ -1,3 +1,5 @@
+![image](https://user-images.githubusercontent.com/69991789/125513616-a74f07d9-849b-49b8-9960-7436c7cbf4bb.png)
+--------
 What country characteristics drive the average life expectancy of it's citizens? Is the quality of life lower in the underdeveloped countries than those that are developed? Do vaccination rates such as hepatitis b and polio play a part in infant mortality death rates? Is a country's total expenditure correlated to the BMI rate of the population? How can we predict life expectancy of a population accurately? Can pinpointing drivers help improve average life expectancy in certain countries?\
 In my project, I explore each of these inquiries utilizing the World Health Organization's Life Expectancy dataframe. Through visualizations and statistical testing, I am able to pinpoint which data characteristics possess positive and negative correlations to a country's average life expectancy. Utilizing supervised machine learning via regression, I was able to create a machine learning model that accurately predicted life expectancy with an average variance two to three years based off of the dataset's top driving features.
 
