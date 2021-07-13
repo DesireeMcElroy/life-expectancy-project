@@ -237,3 +237,5 @@ def robust_scaler(X_train, X_validate, X_test, numeric_cols):
         X_test[i] = X_test_scaled[i]
 
     return X_train, X_validate, X_test, scaler
+
+
