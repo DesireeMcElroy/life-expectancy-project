@@ -1,10 +1,10 @@
 What country characteristics drive the average life expectancy of it's citizens? Is the quality of life lower in the underdeveloped countries than those that are developed? Do vaccination rates such as hepatitis b and polio play a part in infant mortality death rates? Is a country's total expenditure correlated to the BMI rate of the population? How can we predict life expectancy of a population accurately? Can pinpointing drivers help improve average life expectancy in certain countries?\
-In my project, I explore each of these inquiries utilizing the World Health Organization's Life Expectancy dataframe. Through visualizations and statistical testing, I can pinpoint which data characteristics not only directly correlate to each other, but also a country's average life expectancy. Utilizing supervised learning via regression, I was able to create a machine learning model that accurately predicted life expectancy with an average variance two to three years based off of the dataset's top driving features.
+In my project, I explore each of these inquiries utilizing the World Health Organization's Life Expectancy dataframe. Through visualizations and statistical testing, I am able to pinpoint which data characteristics possess positive and negative correlations to a country's average life expectancy. Utilizing supervised machine learning via regression, I was able to create a machine learning model that accurately predicted life expectancy with an average variance two to three years based off of the dataset's top driving features.
 
 
 ## Project Goals
 1. Wrangle WHO life expectancy dataset by acquiring and cleaning the data to increase usability for project.
-2. Utilize wrangled dataframe to explore correlating features to life expectancy via visualizations, statistical testing and possible clustering methods.
+2. Utilize wrangled dataframe to explore correlating features to life expectancy via data visualizations, statistical testing and clustering methods.
 3. Create machine learning models to predict life expectancy and compare end result to baseline model.
 
 ## Replicate my Project
@@ -19,18 +19,18 @@ In my project, I explore each of these inquiries utilizing the World Health Orga
 * Steps to recreate
     1. Clone this repository
     - https://github.com/DesireeMcElroy/life_expectancy-project
-    2. Import WHO Life Expectancy dataset then go through the data science pipeline to wrangle, explore and model.
+    2. Import WHO Life Expectancy dataset: Employ data science pipeline to wrangle, explore and model predictions.
 
 ## Key Findings
-1. Through visual exploration and statistical testing, I was able to confirm my suspicion of top features for my model.
-Using the recursive feature method, I confirmed which features would make it into my final model.
-2. I first created a baseline model using the mean average of life expectancy and initially obtained an RMSE score of 9.2. This score was pretty high considering life expecting was off by an average of 8 years.
-3. I then created four competitive models using multiple algorithms. Three models using LinearRegression and PolynomialRegression outperformed my baseline by over 50%
-4. In the end I moved forward with Model 5 (PolynomialRegression with a degree of 3) to test on the unseen test data set. The results were as follows:
+1. Through visual exploration and statistical testing, I was able to support my suspicion of driving characteristics of average life expectancy.
+2. Using the recursive feature method, I confirmed which features would be used for my final model.
+2. I first created a baseline model using the mean average of life expectancy across the board.I initially obtained an RMSE score of 9.2. This score was pretty high considering life expectancy was off by plus or minus nine years.
+3. From there I created five competitive models using multiple regression algorithms. Three models outperformed my baseline with over 50% increased accuracy.
+4. In the end I moved forward with Model 5 (PolynomialRegression algorithm with a degree of 3) to test on the unseen test data set. The results were as follows:
     - train dataset: RMSE = 2.72
-    - validate (unseen) dataset: RMSE = 3.27
-    - test (unseen) dataset: RMSE = 3.43
-5. Though there is a small chance of overfitting, Model 5 performed well all around on unseen data.
+    - validate dataset (unseen, used to ensure no overfitting) dataset: RMSE = 3.27
+    - test dataset (unseen, used to verify prediction accuracy) dataset: RMSE = 3.43
+5. Despite a small chance of the model being overfit, Model 5 performed well all around on unseen data and accurately predicted life expectancy within two to three years.
 
 ## Drawing Board
 View my trello board [here](https://trello.com/b/OUlKpE5E/life-expectancy-project).
@@ -41,12 +41,14 @@ I want to examine these possibilities:
 1. Does the year of the country's data have any correlation to life expectancy?
 2. Do vaccination rates (hep_b, measles) have a positive correlation to life expectancy?
 3. Are there possible clusters among the independent variables?
+4. Will robust scaling work better considering the dataframes outliers?
+
 
 -------
 
 I will verify my hypotheses using statistical testing and data visualizations. By the end of exploration, I will have identified which features are the best for my model.
 
-During the modeling phase I will establish a baseline model and then use my selected features to generate multiple competitive regression models. I will evaluate each model using the highest driving features of life expectency and compare each model's performance to the baseline. Once I have selected the best model, I will subject it to the test unseen data sample and evaluate the results.
+During the modeling phase I will establish a baseline model based off the distribution of life expectancy and then use my selected features to generate multiple competitive regression models. I will evaluate each model using the highest driving features of life expectancy and compare each model's performance to the baseline. Once I have selected the best model, I will subject it to the unseen test data sample and evaluate the results.
 
 
 ## Data Dictionary
@@ -84,10 +86,10 @@ yrs_education | Number of years of Schooling(years) | float
 
 
 
-## Recommendations
+## Recommendations/With More Time:
 1. I would prefer to continue to impute the remainder of my nulls as opposed to just dropping the rest of them.
-2. I would utilize clustering methods to create new features and see how I can create more correlated features.
-3. I would assess the outliers and/or utilize different scaling methods to see if that has an impact on model performance.
+2. I would explore more clustering possibilities to create new features and see how I can create more correlated features.
+3. I would assess the outliers and/or utilize different scaling methods to see if that has a varying impact on model performance.
 
 
 Resources:
