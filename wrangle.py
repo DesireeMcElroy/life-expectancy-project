@@ -45,7 +45,7 @@ def get_info(df):
 
 def prep_who(df):
     
-    # strip leading whitespaces in columns
+    # strip leading whitespaces in column names
     df.columns = df.columns.str.strip()
     
     # lower case the columns
@@ -74,7 +74,7 @@ def prep_who(df):
 
 def handle_who_nulls(df):
     '''
-    This function takes in my who life expectancy dataframe and 
+    This function takes in my WHO life expectancy dataframe and fill the nulls accordingly and drops the rest
     '''
 
     # fill null for hep_b column using mean average
@@ -92,13 +92,13 @@ def handle_who_nulls(df):
     df.total_expenditure = df.total_expenditure.fillna(df.country_avg)
 
 
-    # some countries has 0 entries of yrs of education, to save this column I filled NAs using the
+    # some countries have 0 entries of yrs of education, to save this column I filled NAs using the
     # mean for developed countries and undeveloped countries
     df['country_avg'] = df.groupby('developed_country').yrs_education.transform('mean')
     df.yrs_education = df.yrs_education.fillna(df.country_avg)
 
 
-    # population and gdp column has too many to impute and the data is wrong, distribution is all over the place
+    # population and gdp column has too many to impute and the data entered is wrong, distribution is all over the place
     df.drop(columns=['population','gdp', 'income_comp_resources', 'country_avg'], inplace=True)
 
 
