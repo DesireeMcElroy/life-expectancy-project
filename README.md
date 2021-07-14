@@ -6,7 +6,7 @@ In my project, I explore each of these inquiries utilizing the World Health Orga
 
 ## Project Goals
 1. Wrangle WHO life expectancy dataset by acquiring and cleaning the data to increase usability for project.
-2. Utilize wrangled dataframe to explore correlating features to life expectancy via data visualizations, statistical testing and clustering methods.
+2. Utilize wrangled dataframe to explore correlating features to life expectancy as well as relationships between independent variables via data visualizations, statistical testing and clustering methods.
 3. Create machine learning models to predict life expectancy and compare end result to baseline model.
 
 ## Replicate My Project
@@ -58,15 +58,14 @@ During the modeling phase I will establish a baseline model based off the distri
 #### Target
 Name | Description | Type
 :---: | :---: | :---:
-life_expectancy | The average life expectancy in years of that country for that year | float
+life_expectancy | The average life expectancy in years of that country's population | float
 #### Features
 Name | Description | Type
 :---: | :---: | :---:
 country | The name of the specified country | object
 year | The year the data of the observation was recorded | int
-status | A country's developed or developing status | int
+status | Indicates whether a country is developed or still developing | int
 adult_mortality | Adult Mortality Rates of both sexes (probability of dying between 15 and 60 years per 1000 population) | float
-county | The county the property is located in | int
 infant_deaths | Number of Infant Deaths per 1000 population | int
 alcohol | Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)  | float
 pct_expenditure | Expenditure on health as a percentage of Gross Domestic Product per capita(%) | float
