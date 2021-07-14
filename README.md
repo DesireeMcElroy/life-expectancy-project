@@ -20,7 +20,7 @@ In my project, I explore each of these inquiries utilizing the World Health Orga
     7. seaborn
 * Steps to recreate
     1. Clone this repository
-    - https://github.com/DesireeMcElroy/life_expectancy-project
+    - https://github.com/DesireeMcElroy/life-expectancy-project
     2. Import WHO Life Expectancy dataset: Employ data science pipeline to wrangle, explore and model predictions.
 
 ## Key Findings
