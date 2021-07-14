@@ -64,7 +64,7 @@ Name | Description | Type
 :---: | :---: | :---:
 country | The name of the specified country | object
 year | The year the data of the observation was recorded | int
-status | Indicates whether a country is developed or still developing | int
+country_developed | Indicates whether a country is developed or still developing | int
 adult_mortality | Adult Mortality Rates of both sexes (probability of dying between 15 and 60 years per 1000 population) | float
 infant_deaths | Number of Infant Deaths per 1000 population | int
 alcohol | Alcohol, recorded per capita (15+) consumption (in litres of pure alcohol)  | float
