@@ -73,6 +73,9 @@ def lmplot(X, y, train):
 
 
 
+
+
+
 def rmse(algo, X_train, X_validate, y_train, y_validate, target, model_name):
     '''
     This function takes in an algorithm name, X_train, X_validate, y_train, y_validate, target and a model name
@@ -103,25 +106,6 @@ def rmse(algo, X_train, X_validate, y_train, y_validate, target, model_name):
     
     return rmse_train, rmse_validate
 
-
-def plot_residuals(df, y, yhat):
-    '''
-    This function takes in a dataframe, the y target variable 
-    and the yhat (model predictions) and creates columns for residuals
-    and baseline residuals. It returns a graph of both residual columns.
-    '''
-
-    # create a residual column
-    df['residual'] = (yhat - y)
-
-    # create a residual baseline column
-    df['residual_baseline'] = (y.mean() - y)
-    
-    fig, ax = plt.subplots(figsize=(13,7))
-
-    ax.hist(df.residual_baseline, label='baseline residuals', alpha=.6)
-    ax.hist(df.residual, label='model residuals', alpha=.6)
-    ax.legend()
 
 
 # KBEST FUNCTION
